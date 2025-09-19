@@ -1,0 +1,16 @@
+.ai-reply-button {
+    background-color: #1a73e8;
+    color: white;
+    border-radius: 4px;
+    font-weight: bold;
+    padding: 0 12px;
+    height: 36px;
+    margin-bottom: 8px; /* Space between AI Reply and Send button */
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.ai-reply-button:hover {
+    background-color: #1669c1;
+}
