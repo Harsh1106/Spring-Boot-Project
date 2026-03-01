@@ -1,0 +1,5 @@
+com/parcel/trackingservice/service/TrackingService.class
+com/parcel/trackingservice/TrackingServiceApplication.class
+com/parcel/trackingservice/repository/BookingRepository.class
+com/parcel/trackingservice/model/Booking.class
+com/parcel/trackingservice/controller/TrackingController.class

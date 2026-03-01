@@ -1,0 +1,57 @@
+<div class="container main-content">
+  <div class="row">
+    <div class="col-12">
+      <div class="purple-card welcome-card">
+        <div class="welcome-header">
+          <h2>Welcome back, {{ currentUser?.name }}! 👋</h2>
+          <p class="text-muted">Select an option from the menu below to get started</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 col-lg-4 mb-4">
+      <a routerLink="/customer-home" class="menu-card menu-card-home">
+        <div class="menu-icon">🏠</div>
+        <h5>Home</h5>
+        <p>Return to home page</p>
+      </a>
+    </div>
+    <div class="col-md-6 col-lg-4 mb-4">
+      <a [routerLink]="['/customer-booking']" class="menu-card menu-card-booking">
+        <div class="menu-icon">📦</div>
+        <h5>Booking Service</h5>
+        <p>Book a new parcel service</p>
+      </a>
+    </div>
+    <div class="col-md-6 col-lg-4 mb-4">
+      <a routerLink="/customer-tracking" class="menu-card menu-card-tracking">
+        <div class="menu-icon">📍</div>
+        <h5>Tracking</h5>
+        <p>Track your parcel status</p>
+      </a>
+    </div>
+    <div class="col-md-6 col-lg-4 mb-4">
+      <a routerLink="/customer-booking-history" class="menu-card menu-card-history">
+        <div class="menu-icon">📋</div>
+        <h5>Previous Booking</h5>
+        <p>View your booking history</p>
+      </a>
+    </div>
+    <div class="col-md-6 col-lg-4 mb-4">
+      <a routerLink="/contact-support" class="menu-card menu-card-support">
+        <div class="menu-icon">💬</div>
+        <h5>Contact Support</h5>
+        <p>Get help and support</p>
+      </a>
+    </div>
+    <div class="col-md-6 col-lg-4 mb-4">
+      <a routerLink="/homepage" class="menu-card menu-card-logout" (click)="authService.logout()">
+        <div class="menu-icon">🚪</div>
+        <h5>Logout</h5>
+        <p>Logout from your account</p>
+      </a>
+    </div>
+  </div>
+</div>

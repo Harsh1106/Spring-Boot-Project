@@ -1,0 +1,29 @@
+<div class="container main-content">
+  <div class="row justify-content-center">
+    <div class="col-lg-6">
+      <div class="purple-card text-center">
+        <div class="success-message mb-4">
+          Consumer Registration successful.
+        </div>
+        <div class="acknowledgment-details">
+          <h4 class="text-purple mb-4">Registration Details</h4>
+          <div class="detail-item mb-3">
+            <strong>Customer ID:</strong> 
+            <span class="text-purple fw-bold">{{ customerId }}</span>
+            <br><small class="text-muted">Use this ID to login</small>
+          </div>
+          <!-- User ID section removed as per requirement -->
+          <div class="detail-item mb-3">
+            <strong>Customer Name:</strong> 
+            <span>{{ name }}</span>
+          </div>
+          <div class="detail-item mb-4">
+            <strong>Email:</strong> 
+            <span>{{ email }}</span>
+          </div>
+          <button class="btn btn-purple" routerLink="/login">Go to Login</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

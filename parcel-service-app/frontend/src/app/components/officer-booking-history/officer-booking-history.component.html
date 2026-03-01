@@ -1,0 +1,133 @@
+<div class="container main-content">
+  <div class="row">
+    <div class="col-12">
+      <div class="purple-card">
+        <h2>Bookings</h2>
+        <p class="text-muted">All booking history in descending order</p>
+
+        <!-- Search Section -->
+        <div class="search-section mb-4">
+          <h5 class="text-purple mb-3">Search Bookings</h5>
+          
+          <div class="alert alert-success" *ngIf="successMessage" role="alert">
+            {{ successMessage }}
+          </div>
+          <div class="alert alert-danger" *ngIf="errorMessage" role="alert">
+            {{ errorMessage }}
+          </div>
+
+          <div class="row">
+            <div class="col-md-4 mb-3">
+              <label for="searchDate" class="form-label">Search by Date</label>
+              <input type="date" class="form-control" id="searchDate" 
+                     [(ngModel)]="searchDate" name="searchDate">
+            </div>
+            <div class="col-md-4 mb-3">
+              <label for="searchBookingId" class="form-label">Search by Booking ID</label>
+              <input type="text" class="form-control" id="searchBookingId" 
+                     [(ngModel)]="searchBookingId" name="searchBookingId" 
+                     placeholder="Enter Booking ID">
+            </div>
+            <div class="col-md-4 mb-3 d-flex align-items-end">
+              <div class="d-flex gap-2">
+                <button class="btn btn-purple" (click)="filterBookings()">Search</button>
+                <button class="btn btn-purple-outline" (click)="clearFilters()">Clear</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="filteredBookings.length === 0" class="alert alert-info">
+          No bookings found.
+        </div>
+
+        <div *ngIf="filteredBookings.length > 0">
+          <div class="table-responsive">
+            <table class="table table-hover align-middle">
+              <thead class="table-light">
+                <tr>
+                  <th>Booking Details</th>
+                  <th>Sender Details</th>
+                  <th>Receiver Details</th>
+                  <th>Schedule</th>
+                  <th>Amount</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let booking of filteredBookings">
+                  <td>
+                    <div class="fw-bold text-purple"><span class="text-muted small fw-normal">ID:</span> {{ booking.bookingId }}</div>
+                    <div class="small text-muted"><span class="fw-normal">Date:</span> {{ booking.bookingDate | date:'mediumDate' }}</div>
+                    <div class="small text-muted"><span class="fw-normal">Time:</span> {{ booking.bookingDate | date:'shortTime' }}</div>
+                    <div class="small text-muted mt-1"><span class="fw-normal">Cust ID:</span> {{ booking.customerId }}</div>
+                  </td>
+                  <td>
+                    <div><span class="text-muted small">Name:</span> <span class="fw-bold">{{ booking.customerName || 'N/A' }}</span></div>
+                    <div><span class="text-muted small">Address:</span> <span class="small">{{ booking.customerAddress || 'N/A' }}</span></div>
+                    <div><span class="text-muted small">PIN:</span> <span class="small">{{ booking.customerPin || 'N/A' }}</span></div>
+                  </td>
+                  <td>
+                    <div><span class="text-muted small">Name:</span> <span class="fw-bold">{{ booking.recName }}</span></div>
+                    <div><span class="text-muted small">Address:</span> <span class="small">{{ booking.recAddress }}</span></div>
+                    <div><span class="text-muted small">PIN:</span> <span class="small">{{ booking.recPin }}</span></div>
+                  </td>
+                  <td>
+                    <div class="d-flex flex-column gap-1">
+                      <div class="small">
+                        <span class="badge bg-light text-dark border me-1">Pickup</span>
+                        <span class="text-muted">Time:</span> {{ booking.parPickupTime ? (booking.parPickupTime | date:'short') : 'N/A' }}
+                      </div>
+                      <div class="small">
+                        <span class="badge bg-light text-dark border me-1">Drop</span>
+                        <span class="text-muted">Time:</span> {{ booking.parDropoffTime ? (booking.parDropoffTime | date:'short') : 'N/A' }}
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="fw-bold"><span class="text-muted small fw-normal">Cost:</span> ₹{{ booking.parServiceCost }}</div>
+                  </td>
+                  <td>
+                    <span class="badge-status" [ngClass]="getStatusClass(booking.parStatus)">
+                      {{ booking.parStatus }}
+                    </span>
+                  </td>
+                  <td>
+                    <button class="btn btn-sm btn-purple" 
+                            *ngIf="canViewInvoice(booking)"
+                            (click)="viewInvoice(booking.bookingId)">
+                      View Invoice
+                    </button>
+                    <span *ngIf="!canViewInvoice(booking)" class="text-muted small">
+                      Payment Pending
+                    </span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Pagination Controls -->
+        <div *ngIf="totalPages > 1" class="d-flex justify-content-between align-items-center mt-3">
+          <div>
+            <span class="text-muted">Page {{ currentPage + 1 }} of {{ totalPages }}</span>
+          </div>
+          <div>
+            <button class="btn btn-sm btn-outline-secondary me-2" 
+                    [disabled]="currentPage === 0" 
+                    (click)="onPageChange(currentPage - 1)">
+              Previous
+            </button>
+            <button class="btn btn-sm btn-outline-secondary" 
+                    [disabled]="currentPage === totalPages - 1" 
+                    (click)="onPageChange(currentPage + 1)">
+              Next
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

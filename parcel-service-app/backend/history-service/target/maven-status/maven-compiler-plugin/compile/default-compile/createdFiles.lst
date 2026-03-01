@@ -1,0 +1,5 @@
+com/parcel/historyservice/service/HistoryService.class
+com/parcel/historyservice/controller/HistoryController.class
+com/parcel/historyservice/repository/BookingRepository.class
+com/parcel/historyservice/model/Booking.class
+com/parcel/historyservice/HistoryServiceApplication.class

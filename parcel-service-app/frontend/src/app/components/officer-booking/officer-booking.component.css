@@ -1,0 +1,37 @@
+/* Officer Booking specific styles */
+.cost-display {
+  border: 2px solid var(--primary-purple);
+}
+
+.bg-purple {
+  background-color: var(--primary-purple) !important;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  font-size: 1.2rem;
+}
+
+.customer-dropdown {
+  z-index: 1000;
+  margin-top: 0.25rem;
+  border: 1px solid #dee2e6;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.customer-dropdown .dropdown-item {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.customer-dropdown .dropdown-item:hover {
+  background-color: rgba(106, 27, 154, 0.1);
+}
+
+.customer-dropdown .dropdown-item:last-child {
+  border-bottom: none;
+}
+
+input[readonly] {
+  background-color: #e9ecef;
+  cursor: not-allowed;
+}

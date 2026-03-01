@@ -1,0 +1,65 @@
+<div class="container main-content">
+  <div class="row justify-content-center">
+    <div class="col-lg-5">
+      <div class="purple-card">
+        <h2 class="text-center mb-4">Login</h2>
+        <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+          <!-- Role Selection -->
+          <div class="mb-4">
+            <label class="form-label">Login As <span class="text-danger">*</span></label>
+            <div class="role-selection">
+              <div class="role-option">
+                <input type="radio" id="role-customer" name="role" 
+                       [(ngModel)]="role" value="customer" required>
+                <label for="role-customer" class="role-label">
+                  <span class="role-icon">👤</span>
+                  <span class="role-text">Customer</span>
+                </label>
+              </div>
+              <div class="role-option">
+                <input type="radio" id="role-officer" name="role" 
+                       [(ngModel)]="role" value="officer" required>
+                <label for="role-officer" class="role-label">
+                  <span class="role-icon">👮</span>
+                  <span class="role-text">Officer</span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="username" class="form-label">{{ role === 'officer' ? 'Officer ID' : 'Customer ID' }} <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="username" 
+                   [(ngModel)]="username" name="username" 
+                   [placeholder]="role === 'officer' ? '' : 'Enter your Customer ID (e.g. USER@123456)'" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="password" class="form-label">Password <span class="text-danger">*</span></label>
+            <input type="password" class="form-control" id="password" 
+                   [(ngModel)]="password" name="password" 
+                   required>
+          </div>
+
+          <div class="alert alert-danger" *ngIf="errorMessage" role="alert">
+            {{ errorMessage }}
+          </div>
+
+          <div class="d-grid">
+            <button type="submit" class="btn btn-purple" [disabled]="isLoading">
+              <span *ngIf="!isLoading">Login</span>
+              <span *ngIf="isLoading">
+                <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+                Logging in...
+              </span>
+            </button>
+          </div>
+
+          <div class="text-center mt-3">
+            <p>Don't have an account? <a routerLink="/registration" class="text-purple register-link">Register here</a></p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

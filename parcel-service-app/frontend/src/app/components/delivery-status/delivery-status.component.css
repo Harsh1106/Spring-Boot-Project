@@ -1,0 +1,15 @@
+/* Delivery Status specific styles */
+.booking-details {
+  margin-top: 2rem;
+}
+
+.update-section {
+  background: #f5f3f7;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-top: 1rem;
+}
+
+.input-group {
+  max-width: 500px;
+}

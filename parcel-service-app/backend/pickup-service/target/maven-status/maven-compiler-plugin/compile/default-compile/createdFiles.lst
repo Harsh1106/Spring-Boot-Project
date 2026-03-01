@@ -1,0 +1,5 @@
+com/parcel/pickupservice/model/Booking.class
+com/parcel/pickupservice/service/PickupService.class
+com/parcel/pickupservice/PickupServiceApplication.class
+com/parcel/pickupservice/repository/BookingRepository.class
+com/parcel/pickupservice/controller/PickupController.class

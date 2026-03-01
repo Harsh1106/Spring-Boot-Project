@@ -1,0 +1,99 @@
+<div class="container main-content">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="purple-card">
+        <h2 class="text-center mb-4">Payment</h2>
+
+        <div class="alert alert-danger" *ngIf="errorMessage" role="alert">
+          {{ errorMessage }}
+        </div>
+
+        <div *ngIf="booking">
+          <!-- Payment Form -->
+          <form (ngSubmit)="onSubmit()" #paymentForm="ngForm">
+            <div class="mb-4">
+              <h4 class="text-purple mb-3">Payment Method</h4>
+              <div class="mb-3">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="paymentMethod" 
+                         id="paymentCard" value="card" 
+                         [(ngModel)]="paymentData.paymentMethod" checked>
+                  <label class="form-check-label" for="paymentCard">
+                    Credit/Debit Card
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="paymentMethod" 
+                         id="paymentCash" value="cash" 
+                         [(ngModel)]="paymentData.paymentMethod">
+                  <label class="form-check-label" for="paymentCash">
+                    Cash on Delivery
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div *ngIf="paymentData.paymentMethod === 'card'">
+              <div class="mb-3">
+                <label for="cardNumber" class="form-label">Card Number <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="cardNumber" 
+                       [(ngModel)]="paymentData.cardNumber" name="cardNumber" 
+                       (input)="formatCardNumber($event)"
+                       placeholder="1234 5678 9012 3456" maxlength="19" required>
+              </div>
+
+              <div class="mb-3">
+                <label for="cardHolderName" class="form-label">Card Holder Name <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="cardHolderName" 
+                       [(ngModel)]="paymentData.cardHolderName" name="cardHolderName" 
+                       placeholder="John Doe" required>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="expiryDate" class="form-label">Expiry Date <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" id="expiryDate" 
+                         [(ngModel)]="paymentData.expiryDate" name="expiryDate" 
+                         (input)="formatExpiryDate($event)"
+                         placeholder="MM/YY" maxlength="5" required>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                  <label for="cvv" class="form-label">CVV <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" id="cvv" 
+                         [(ngModel)]="paymentData.cvv" name="cvv" 
+                         placeholder="123" maxlength="4" required>
+                </div>
+              </div>
+            </div>
+
+            <div *ngIf="paymentData.paymentMethod === 'cash'" class="alert alert-info">
+              <i class="bi bi-info-circle"></i> Payment will be collected at the time of delivery.
+            </div>
+
+            <div class="d-flex gap-3 justify-content-center mt-4">
+              <button type="submit" class="btn btn-purple" [disabled]="isProcessing">
+                <span *ngIf="!isProcessing">
+                  {{ paymentData.paymentMethod === 'cash' ? 'Book' : 'Pay ₹' + booking.parServiceCost }}
+                </span>
+                <span *ngIf="isProcessing">
+                  <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+                  Processing...
+                </span>
+              </button>
+              <button type="button" class="btn btn-purple-outline" (click)="cancelPayment()" [disabled]="isProcessing">
+                Cancel
+              </button>
+            </div>
+          </form>
+
+          <div class="text-center mt-3">
+            <small class="text-muted">
+              <i class="bi bi-shield-check"></i> This is a demo payment. No actual payment gateway is integrated.
+            </small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

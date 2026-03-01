@@ -1,0 +1,17 @@
+/* Registration specific styles */
+.form-check-input:checked {
+  background-color: var(--primary-purple);
+  border-color: var(--primary-purple);
+}
+
+.form-check-input:focus {
+  border-color: var(--primary-purple);
+  box-shadow: 0 0 0 0.2rem rgba(106, 27, 154, 0.25);
+}
+
+.invalid-feedback {
+  display: block;
+}
+.login-redirect {
+  text-decoration: none;
+}

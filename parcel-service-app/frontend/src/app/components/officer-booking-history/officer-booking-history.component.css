@@ -1,0 +1,11 @@
+/* Officer Booking History specific styles */
+.search-section {
+  background: #f5f3f7;
+  padding: 1.5rem;
+  border-radius: 8px;
+}
+
+.btn-sm {
+  padding: 0.25rem 0.75rem;
+  font-size: 0.875rem;
+}

@@ -1,0 +1,17 @@
+/* Invoice specific styles */
+.invoice-details {
+  background: #f5f3f7;
+  padding: 2rem;
+  border-radius: 8px;
+}
+
+@media print {
+  .btn {
+    display: none !important;
+  }
+  
+  .purple-card {
+    box-shadow: none;
+    border: none;
+  }
+}

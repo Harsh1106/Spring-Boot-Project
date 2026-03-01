@@ -1,0 +1,8 @@
+/* Customer Tracking specific styles */
+.tracking-results {
+  margin-top: 2rem;
+}
+
+.input-group {
+  max-width: 500px;
+}

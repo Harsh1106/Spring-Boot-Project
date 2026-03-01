@@ -1,0 +1,5 @@
+com/parcel/bookingservice/controller/BookingController.class
+com/parcel/bookingservice/model/Booking.class
+com/parcel/bookingservice/BookingServiceApplication.class
+com/parcel/bookingservice/service/BookingService.class
+com/parcel/bookingservice/repository/BookingRepository.class

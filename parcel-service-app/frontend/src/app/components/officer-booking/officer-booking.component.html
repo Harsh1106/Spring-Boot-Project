@@ -1,0 +1,156 @@
+<div class="container main-content">
+  <div class="row justify-content-center">
+    <div class="col-lg-10">
+      <div class="purple-card">
+        <h2>Booking Service</h2>
+
+        <form (ngSubmit)="onSubmit()" #bookingForm="ngForm">
+          <!-- Customer Information -->
+          <div class="mb-4">
+            <h4 class="text-purple mb-3">Sender Information</h4>
+            
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="customerName" class="form-label">Sender Name <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="customerName" 
+                       [(ngModel)]="formData.customerName" name="customerName" required>
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label for="customerMobile" class="form-label">Sender Mobile <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="customerMobile" 
+                       [(ngModel)]="formData.customerMobile" name="customerMobile" 
+                       pattern="[0-9]{10}" maxlength="10" required>
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label for="customerAddress" class="form-label">Sender Address <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="customerAddress" 
+                       [(ngModel)]="formData.customerAddress" name="customerAddress" required>
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label for="customerPin" class="form-label">Sender PIN <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="customerPin" 
+                       [(ngModel)]="formData.customerPin" name="customerPin" 
+                       pattern="[0-9]{6}" maxlength="6" required>
+                <small class="form-text text-muted">6 digits required</small>
+              </div>
+            </div>
+          </div>
+
+          <!-- Receiver Information -->
+          <div class="mb-4">
+            <h4 class="text-purple mb-3">Receiver Information</h4>
+            
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="recName" class="form-label">Receiver Name <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="recName" 
+                       [(ngModel)]="formData.recName" name="recName" required>
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label for="recPin" class="form-label">Receiver PIN <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="recPin" 
+                       [(ngModel)]="formData.recPin" name="recPin" 
+                       pattern="[0-9]{6}" maxlength="6" required>
+                <small class="form-text text-muted">6 digits required</small>
+              </div>
+
+              <div class="col-md-12 mb-3">
+                <label for="recAddress" class="form-label">Receiver Address <span class="text-danger">*</span></label>
+                <textarea class="form-control" id="recAddress" rows="2" 
+                          [(ngModel)]="formData.recAddress" name="recAddress" required></textarea>
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label for="recMobile" class="form-label">Receiver Mobile <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="recMobile" 
+                       [(ngModel)]="formData.recMobile" name="recMobile" 
+                       pattern="[0-9]{10}" maxlength="10" required>
+              </div>
+            </div>
+          </div>
+
+          <!-- Parcel Information -->
+          <div class="mb-4">
+            <h4 class="text-purple mb-3">Parcel Information</h4>
+            
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="parWeightGram" class="form-label">Parcel Weight (grams) <span class="text-danger">*</span></label>
+                <input type="number" class="form-control" id="parWeightGram" 
+                       [(ngModel)]="formData.parWeightGram" name="parWeightGram" 
+                       (input)="calculateCost()" min="1" required>
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label for="parDeliveryType" class="form-label">Delivery Type <span class="text-danger">*</span></label>
+                <select class="form-select" id="parDeliveryType" 
+                        [(ngModel)]="formData.parDeliveryType" name="parDeliveryType" 
+                        (change)="calculateCost()" required>
+                  <option *ngFor="let type of deliveryTypes" [value]="type">{{ type }}</option>
+                </select>
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label for="parPackingPreference" class="form-label">Packing Preference <span class="text-danger">*</span></label>
+                <select class="form-select" id="parPackingPreference" 
+                        [(ngModel)]="formData.parPackingPreference" name="parPackingPreference" 
+                        (change)="calculateCost()" required>
+                  <option *ngFor="let pref of packingPreferences" [value]="pref">{{ pref }}</option>
+                </select>
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label for="parContentsDescription" class="form-label">Contents Description <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="parContentsDescription" 
+                       [(ngModel)]="formData.parContentsDescription" name="parContentsDescription" required>
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label for="parPickupTime" class="form-label">Pickup Time <span class="text-danger">*</span></label>
+                <input type="datetime-local" class="form-control" id="parPickupTime" 
+                       [(ngModel)]="formData.parPickupTime" name="parPickupTime" 
+                       [min]="minPickupDateTime" [max]="maxPickupDateTime" required>
+                <small class="form-text text-muted">Must be between 9 AM and 6 PM</small>
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label for="parDropoffTime" class="form-label">Dropoff Time <span class="text-danger">*</span></label>
+                <input type="datetime-local" class="form-control" id="parDropoffTime" 
+                       [(ngModel)]="formData.parDropoffTime" name="parDropoffTime" 
+                       [min]="minDropoffDateTime" [max]="maxDropoffDateTime" required>
+                <small class="form-text text-muted">Must be between 9 AM and 6 PM</small>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cost Calculation -->
+          <div class="mb-4">
+            <div class="cost-display p-3 bg-light rounded">
+              <h5 class="text-purple mb-0">
+                Service Cost: <span class="badge bg-purple">₹{{ calculatedCost }}</span>
+              </h5>
+              <small class="text-muted">Payment Time: {{ currentDateTime }}</small>
+            </div>
+          </div>
+
+          <div class="alert alert-danger" *ngIf="errorMessage" role="alert">
+            {{ errorMessage }}
+          </div>
+
+          <div class="alert alert-success" *ngIf="successMessage" role="alert">
+            {{ successMessage }}
+          </div>
+
+          <div class="d-flex gap-3">
+            <button type="submit" class="btn btn-purple">Submit Booking</button>
+            <button type="button" class="btn btn-purple-outline" routerLink="/officer-home">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+/* Payment component specific styles */
+.booking-summary {
+  border: 2px solid var(--primary-purple);
+  border-radius: 8px;
+}
+
+.form-check-input:checked {
+  background-color: var(--primary-purple);
+  border-color: var(--primary-purple);
+}
+
+.form-check-label {
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.alert-info {
+  background-color: rgba(106, 27, 154, 0.1);
+  border-color: var(--primary-purple);
+  color: var(--dark-purple);
+}
+
+.spinner-border-sm {
+  width: 1rem;
+  height: 1rem;
+  border-width: 0.15em;
+}

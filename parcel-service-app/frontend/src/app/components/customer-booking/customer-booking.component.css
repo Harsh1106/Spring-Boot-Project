@@ -1,0 +1,28 @@
+/* Customer Booking specific styles */
+.user-info-section {
+  background: #f5f3f7;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border-left: 4px solid var(--primary-purple);
+}
+
+.read-only-field {
+  color: #6c757d;
+  font-style: italic;
+  background-color: #e9ecef;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.cost-display {
+  border: 2px solid var(--primary-purple);
+}
+
+.bg-purple {
+  background-color: var(--primary-purple) !important;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  font-size: 1.2rem;
+}

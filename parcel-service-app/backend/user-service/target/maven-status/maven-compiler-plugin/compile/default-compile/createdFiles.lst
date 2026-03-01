@@ -1,0 +1,11 @@
+com/parcel/userservice/dto/LoginRequest.class
+com/parcel/userservice/model/Login.class
+com/parcel/userservice/repository/CustomerRepository.class
+com/parcel/userservice/model/Customer.class
+com/parcel/userservice/UserServiceApplication.class
+com/parcel/userservice/repository/LoginRepository.class
+com/parcel/userservice/dto/LoginResponse.class
+com/parcel/userservice/controller/UserController.class
+com/parcel/userservice/service/UserService.class
+com/parcel/userservice/config/H2ServerConfig.class
+com/parcel/userservice/dto/RegistrationRequest.class

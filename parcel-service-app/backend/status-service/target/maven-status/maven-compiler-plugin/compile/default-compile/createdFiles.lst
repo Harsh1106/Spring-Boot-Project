@@ -1,0 +1,5 @@
+com/parcel/statusservice/repository/BookingRepository.class
+com/parcel/statusservice/controller/StatusController.class
+com/parcel/statusservice/StatusServiceApplication.class
+com/parcel/statusservice/model/Booking.class
+com/parcel/statusservice/service/StatusService.class

@@ -1,0 +1,22 @@
+/* Registration Acknowledgment specific styles */
+.acknowledgment-details {
+  background: #f5f3f7;
+  padding: 2rem;
+  border-radius: 8px;
+  margin-top: 1rem;
+}
+
+.detail-item {
+  font-size: 1.1rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.detail-item:last-child {
+  border-bottom: none;
+}
+
+.detail-item strong {
+  color: var(--dark-purple);
+  margin-right: 0.5rem;
+}

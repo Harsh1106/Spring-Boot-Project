@@ -1,0 +1,11 @@
+/Users/tushartyagi/Downloads/parcel-service-app/backend/user-service/src/main/java/com/parcel/userservice/model/Login.java
+/Users/tushartyagi/Downloads/parcel-service-app/backend/user-service/src/main/java/com/parcel/userservice/config/H2ServerConfig.java
+/Users/tushartyagi/Downloads/parcel-service-app/backend/user-service/src/main/java/com/parcel/userservice/dto/LoginResponse.java
+/Users/tushartyagi/Downloads/parcel-service-app/backend/user-service/src/main/java/com/parcel/userservice/controller/UserController.java
+/Users/tushartyagi/Downloads/parcel-service-app/backend/user-service/src/main/java/com/parcel/userservice/dto/RegistrationRequest.java
+/Users/tushartyagi/Downloads/parcel-service-app/backend/user-service/src/main/java/com/parcel/userservice/dto/LoginRequest.java
+/Users/tushartyagi/Downloads/parcel-service-app/backend/user-service/src/main/java/com/parcel/userservice/repository/CustomerRepository.java
+/Users/tushartyagi/Downloads/parcel-service-app/backend/user-service/src/main/java/com/parcel/userservice/model/Customer.java
+/Users/tushartyagi/Downloads/parcel-service-app/backend/user-service/src/main/java/com/parcel/userservice/UserServiceApplication.java
+/Users/tushartyagi/Downloads/parcel-service-app/backend/user-service/src/main/java/com/parcel/userservice/repository/LoginRepository.java
+/Users/tushartyagi/Downloads/parcel-service-app/backend/user-service/src/main/java/com/parcel/userservice/service/UserService.java

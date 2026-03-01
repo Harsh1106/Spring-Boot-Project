@@ -1,0 +1,93 @@
+<div class="container main-content">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="purple-card" id="invoice">
+        <div class="text-center mb-4">
+          <h2 class="text-purple">Invoice</h2>
+          <p class="text-muted">Booking ID: {{ booking?.bookingId }}</p>
+        </div>
+
+        <div class="alert alert-danger" *ngIf="errorMessage" role="alert">
+          <strong>Error:</strong> {{ errorMessage }}
+        </div>
+
+        <div *ngIf="!booking && !errorMessage" class="alert alert-info">
+          Loading invoice...
+        </div>
+
+        <div *ngIf="booking">
+          <div class="invoice-details">
+            <div class="row mb-4">
+              <div class="col-md-6">
+                <h5 class="text-purple">Sender Information</h5>
+                <p><strong>Name:</strong> {{ booking.customerName }}</p>
+                <p><strong>Address:</strong> {{ booking.customerAddress }}</p>
+                <p><strong>Mobile:</strong> {{ booking.customerMobile }}</p>
+              </div>
+              <div class="col-md-6">
+                <h5 class="text-purple">Receiver Information</h5>
+                <p><strong>Name:</strong> {{ booking.recName }}</p>
+                <p><strong>Address:</strong> {{ booking.recAddress }}</p>
+                <p><strong>PIN:</strong> {{ booking.recPin }}</p>
+                <p><strong>Mobile:</strong> {{ booking.recMobile }}</p>
+              </div>
+            </div>
+
+            <hr>
+
+            <div class="row mb-4">
+              <div class="col-12">
+                <h5 class="text-purple">Parcel Details</h5>
+                <table class="table table-hover align-middle">
+                  <tbody>
+                    <tr>
+                      <td><strong>Parcel Weight (g):</strong></td>
+                      <td>{{ booking.parWeightGram }}</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Contents Description:</strong></td>
+                      <td>{{ booking.parContentsDescription }}</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Delivery Type:</strong></td>
+                      <td>{{ booking.parDeliveryType }}</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Packing Preference:</strong></td>
+                      <td>{{ booking.parPackingPreference }}</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Pickup Time:</strong></td>
+                      <td>{{ booking.parPickupTime | date:'medium' }}</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Dropoff Time:</strong></td>
+                      <td>{{ booking.parDropoffTime | date:'medium' }}</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Payment Mode:</strong></td>
+                      <td>{{ booking.parPaymentMode }}</td>
+                    </tr>
+                    <tr *ngIf="booking.parPaymentMode !== 'COD'">
+                      <td><strong>Payment Time:</strong></td>
+                      <td>{{ booking.parPaymentTime | date:'medium' }}</td>
+                    </tr>
+                    <tr class="table-primary">
+                      <td><strong>Service Cost:</strong></td>
+                      <td><strong>₹{{ booking.parServiceCost }}</strong></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div class="d-flex gap-3 justify-content-center">
+            <button class="btn btn-purple" (click)="printInvoice()">Print Invoice</button>
+            <button class="btn btn-purple-outline" (click)="goBack()">Back</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
